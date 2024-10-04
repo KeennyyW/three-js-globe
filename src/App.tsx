@@ -10,10 +10,8 @@ const App: React.FC = () => {
 
   useEffect(() => {
     let renderer, camera, scene, controls;
-    // let mouseX = 0;
-    // let mouseY = 0;
-    let windowHalfX = window.innerWidth / 2;
-    let windowHalfY = window.innerHeight / 2;
+    
+    
     let Globe: any;
 
     // Initialize renderer
@@ -97,8 +95,11 @@ const App: React.FC = () => {
     window.addEventListener("resize", onWindowResize, false);
 
     const onMouseMove = (event: MouseEvent) => {
-      const mouseX = event.clientX - windowHalfX;
-      mouseY = event.clientY - windowHalfY;
+      const mouseX = event.clientX;
+      const mouseY = event.clientY;
+    
+      // Example: Log the mouse coordinates or use them for something
+      console.log("Mouse X:", mouseX, "Mouse Y:", mouseY);
     };
 
     document.addEventListener("mousemove", onMouseMove);
