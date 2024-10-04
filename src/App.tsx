@@ -1,19 +1,17 @@
 import React, { useEffect, useRef } from "react";
 import * as THREE from "three";
 import ThreeGlobe from "three-globe";
-import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
-import { createGlowMesh } from "three-glow-mesh";
+import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
 import countries from "./files/globe-data-min.json";
-import travelHistory from "./files/my-flights.json";
-import airportHistory from "./files/my-airports.json";
+
 
 const App: React.FC = () => {
   const mountRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     let renderer, camera, scene, controls;
-    let mouseX = 0;
-    let mouseY = 0;
+    // let mouseX = 0;
+    // let mouseY = 0;
     let windowHalfX = window.innerWidth / 2;
     let windowHalfY = window.innerHeight / 2;
     let Globe: any;
@@ -57,7 +55,7 @@ const App: React.FC = () => {
     // Initialize controls
     controls = new OrbitControls(camera, renderer.domElement);
     controls.enableDamping = true;
-    controls.dynamicDampingFactor = 0.01;
+    
     controls.enablePan = false;
     controls.minDistance = 200;
     controls.maxDistance = 500;
@@ -78,16 +76,7 @@ const App: React.FC = () => {
       .showAtmosphere(true)
       .atmosphereColor("#3a228a")
       .atmosphereAltitude(0.25)
-      .hexPolygonColor((e) => {
-        if (
-          ["KGZ", "KOR", "THA", "RUS", "UZB", "IDN", "KAZ", "MYS"].includes(
-            e.properties.ISO_A3
-          )
-        ) {
-          return "rgba(255,255,255, 1)";
-        } else return "rgba(255,255,255, 0.7)";
-      });
-
+      
     Globe.rotateY(-Math.PI * (5 / 9));
     Globe.rotateZ(-Math.PI / 6);
     const globeMaterial = Globe.globeMaterial();
@@ -108,7 +97,7 @@ const App: React.FC = () => {
     window.addEventListener("resize", onWindowResize, false);
 
     const onMouseMove = (event: MouseEvent) => {
-      mouseX = event.clientX - windowHalfX;
+      const mouseX = event.clientX - windowHalfX;
       mouseY = event.clientY - windowHalfY;
     };
 
