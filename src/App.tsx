@@ -3,7 +3,7 @@ import * as THREE from 'three';
 import { useEffect } from 'react';
 import './App.css';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
-import ThreeGlobe from 'three-globe';
+// import ThreeGlobe from 'three-globe';
 
 
 function App() {
@@ -68,17 +68,17 @@ function App() {
 
   
 
-    function initGlobe() {
-      const Globe = new ThreeGlobe();
+    // function initGlobe() {
+    //   const Globe = new ThreeGlobe();
 
-      const globeMaterial = Globe.globeMaterial();
-      globeMaterial.color = new THREE.Color(0x3a228a);
-      globeMaterial.emissive = new THREE.Color(0x220038);
-      globeMaterial.emissiveIntesity = 0.1;
-      globeMaterial.shininess = 0.7;
+    //   const globeMaterial = Globe.globeMaterial();
+    //   globeMaterial.color = new THREE.Color(0x3a228a);
+    //   globeMaterial.emissive = new THREE.Color(0x220038);
+    //   globeMaterial.emissiveIntesity = 0.1;
+    //   globeMaterial.shininess = 0.7;
       
-      scene.add(boxMesh);
-    }
+    //   scene.add(boxMesh);
+    // }
 
     scene.background = new THREE.Color(0x040d21);
 
@@ -102,7 +102,7 @@ function App() {
   return (
     <>
       <div className='App'>
-        <canvas className='canvas' id='myThreeJsCanvas'></canvas>
+        <canvas className='canvasCSS' id='myThreeJsCanvas'></canvas>
       </div>
     </>
   );

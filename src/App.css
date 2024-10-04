@@ -67,7 +67,7 @@ canvas {
   height: 100vh; /* Full viewport height */
 }
 
-.canvas {
+.canvasCSS {
   width: 100%;
   height: 100%;
 }
