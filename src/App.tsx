@@ -6,7 +6,8 @@ import countries from "./files/globe-data-min.json";
 import { RenderPass } from "three/examples/jsm/postprocessing/RenderPass.js";
 import { EffectComposer } from "three/examples/jsm/postprocessing/EffectComposer.js";
 import { UnrealBloomPass } from "three/examples/jsm/postprocessing/UnrealBloomPass.js";
-import {Color, DirectionalLight, PointLight} from "three";
+import {Color, DirectionalLight, PointLight} from "three"
+
 
 import travelHistory from "./files/connections.json";
 import airportHistory from "./files/DataCenters.json";
@@ -40,7 +41,7 @@ const App: React.FC = () => {
     camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
     camera.position.z = 200;
     camera.position.x = 0;
-    camera.position.y = 0;
+    camera.position.y = 120;
 
     const dLight = new DirectionalLight(0xffffff, 0.8);
     dLight.position.set(-800, 2000, 400);
@@ -146,6 +147,8 @@ const App: React.FC = () => {
 
     scene.add(Globe);
 
+
+
     // Handle window resize
     const onWindowResize = () => {
       camera.aspect = window.innerWidth / window.innerHeight;
@@ -177,22 +180,6 @@ const App: React.FC = () => {
       requestAnimationFrame(animate);
     };
 
-    // Stars (might use)
-
-    // function addStar(){
-    //   const geometry = new THREE.SphereGeometry(0.10, 100, 100)
-    //   const material = new THREE.MeshStandardMaterial( {color: 0xffffff })
-    //   const star = new THREE.Mesh(geometry, material)
-    //
-    //   const [x, y, z] = Array(3).fill().map(()=> THREE.MathUtils.randFloatSpread( 10000 ))
-    //
-    //   star.position.set(x,y,z)
-    //   scene.add(star)
-    //
-    // }
-    // Array(200).fill().forEach(addStar)
-
-
     animate();
 
     return () => {
@@ -204,7 +191,8 @@ const App: React.FC = () => {
     };
   }, []);
 
-  return <div ref={mountRef} style={{ width: "100vw", height: "100vh" }} />;
+  return <div ref={mountRef} style={{ width: "100vw", height: "100vh" }} />
+
 };
 
 export default App;
