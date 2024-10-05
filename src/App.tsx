@@ -114,7 +114,7 @@ const App: React.FC = () => {
           })
           .arcDashLength(0.9)
           .arcDashGap(2)
-          .arcDashAnimateTime(1000)
+          .arcDashAnimateTime(500)
           .arcsTransitionDuration(1000)
           .arcDashInitialGap((e: { order: number; }) => e.order)
           .labelsData(airportHistory.airports)
@@ -191,7 +191,7 @@ const App: React.FC = () => {
     };
   }, []);
 
-  return <div ref={mountRef} style={{ width: "100vw", height: "100vh" }} />
+  return <div ref={mountRef} style={{ width: "100%", height: "100%" }} />
 
 };
 
