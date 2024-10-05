@@ -102,27 +102,27 @@ const App: React.FC = () => {
 
     setTimeout(()=> {
       Globe.arcsData(travelHistory.connection)
-          .arcColor((e) => {
+          .arcColor((e: { status: never; }) => {
             return e.status ? "#7cd0ff" : "7cd0ff";
           })
-          .arcAltitude((e) => {
+          .arcAltitude((e: { arcAlt: never; }) => {
             return e.arcAlt;
           })
-          .arcStroke((e) => {
+          .arcStroke((e: { status: never; }) => {
             return e.status ? 0.5 : 0.3
           })
           .arcDashLength(0.9)
           .arcDashGap(2)
           .arcDashAnimateTime(1000)
           .arcsTransitionDuration(1000)
-          .arcDashInitialGap((e) => e.order * 1)
+          .arcDashInitialGap((e: { order: number; }) => e.order)
           .labelsData(airportHistory.airports)
           .labelColor(() => "#ffcb21")
-          .labelDotOrientation((e) => {
+          .labelDotOrientation((e: { text: string; }) => {
             return e.text === "ALA" ? "top" : "right";
           })
           .labelDotRadius(0.3)
-          .labelSize((e) => e.size)
+          .labelSize((e: { size: never; }) => e.size)
           .labelText("city")
           .labelResolution(6)
           .labelAltitude(0.01)
