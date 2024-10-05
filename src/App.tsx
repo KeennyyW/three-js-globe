@@ -114,7 +114,7 @@ const App: React.FC = () => {
           })
           .arcDashLength(0.9)
           .arcDashGap(2)
-          .arcDashAnimateTime(500)
+          .arcDashAnimateTime(300)
           .arcsTransitionDuration(1000)
           .arcDashInitialGap((e: { order: number; }) => e.order)
           .labelsData(airportHistory.airports)
