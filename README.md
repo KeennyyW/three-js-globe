@@ -9,7 +9,7 @@ A simple globe visualizing interet transfer between big data centers
 ## Installation
 
    ```bash
-   git clone git clone https://github.com/your-username/three-js-globe.git
+   git clone https://github.com/KeennyyW/three-js-globe.git
  ```
 
 ```bash
