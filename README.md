@@ -1,6 +1,6 @@
 # Three.js Globe in React with Vite
 
-A simple globe visualizing interet transfer between big data centers 
+A simple globe, visualizing interet transfer between big data centers 
 
 ## Online Preview 
 
