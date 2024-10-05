@@ -1,0 +1,85 @@
+{
+    "type": "AirportsCollection",
+    "airports": [
+        {
+            "text": "PEK",
+            "size": 1.0,
+            "country": "China",
+            "city": "Beijing",
+            "lat": "39.9042",
+            "lng": "116.4074"
+        },
+        {
+            "text": "DCA",
+            "size": 1.0,
+            "country": "USA",
+            "city": "Northern Virginia",
+            "lat": "38.8512",
+            "lng": "-77.0402"
+        },
+        {
+            "text": "SFO",
+            "size": 1.0,
+            "country": "USA",
+            "city": "Silicon Valley",
+            "lat": "37.7749",
+            "lng": "-122.4194"
+        },
+        {
+            "text": "HND",
+            "size": 1.0,
+            "country": "Japan",
+            "city": "Tokyo",
+            "lat": "35.6895",
+            "lng": "139.6917"
+        },
+        {
+            "text": "SYD",
+            "size": 1.0,
+            "country": "Australia",
+            "city": "Sydney",
+            "lat": "-33.8688",
+            "lng": "151.2093"
+        },
+        {
+            "text": "FRA",
+            "size": 1.0,
+            "country": "Germany",
+            "city": "Frankfurt",
+            "lat": "50.1109",
+            "lng": "8.6821"
+        },
+        {
+            "text": "JNB",
+            "size": 1.0,
+            "country": "South Africa",
+            "city": "Johannesburg",
+            "lat": "-26.2041",
+            "lng": "28.0473"
+        },
+        {
+            "text": "SIN",
+            "size": 1.0,
+            "country": "Singapore",
+            "city": "Singapore",
+            "lat": "1.3521",
+            "lng": "103.8198"
+        },
+        {
+            "text": "ORD",
+            "size": 1.0,
+            "country": "USA",
+            "city": "Chicago",
+            "lat": "41.8781",
+            "lng": "-87.6298"
+        },
+         {
+            "text": "AMS",
+            "size": 1.0,
+            "country": "Netherlands",
+            "city": "Amsterdam",
+            "lat": "52.3676",
+            "lng": "4.9041"
+        }
+    ]
+}

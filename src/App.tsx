@@ -8,13 +8,16 @@ import { EffectComposer } from "three/examples/jsm/postprocessing/EffectComposer
 import { UnrealBloomPass } from "three/examples/jsm/postprocessing/UnrealBloomPass.js";
 import {Color, DirectionalLight, PointLight} from "three";
 
+import travelHistory from "./files/connections.json";
+import airportHistory from "./files/DataCenters.json";
+
 
 
 const App: React.FC = () => {
   const mountRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    let renderer, camera, scene, controls;
+    let renderer, camera, scene: THREE.Scene, controls;
 
 
     let Globe: any;
@@ -51,8 +54,6 @@ const App: React.FC = () => {
     dLight2.position.set(-200, 500, 200);
     camera.add(dLight2);
 
-
-
     scene.add(camera);
 
 
@@ -65,7 +66,7 @@ const App: React.FC = () => {
 
     controls.enablePan = false;
     controls.minDistance = 150;
-    controls.maxDistance = 400;
+    controls.maxDistance = 220;
     controls.rotateSpeed = 0.8;
     controls.zoomSpeed = 1;
     controls.autoRotate = false;
@@ -99,6 +100,42 @@ const App: React.FC = () => {
       .atmosphereColor("#3a228a")
       .atmosphereAltitude(0.25)
 
+    setTimeout(()=> {
+      Globe.arcsData(travelHistory.connection)
+          .arcColor((e) => {
+            return e.status ? "#7cd0ff" : "7cd0ff";
+          })
+          .arcAltitude((e) => {
+            return e.arcAlt;
+          })
+          .arcStroke((e) => {
+            return e.status ? 0.5 : 0.3
+          })
+          .arcDashLength(0.9)
+          .arcDashGap(2)
+          .arcDashAnimateTime(1000)
+          .arcsTransitionDuration(1000)
+          .arcDashInitialGap((e) => e.order * 1)
+          .labelsData(airportHistory.airports)
+          .labelColor(() => "#ffcb21")
+          .labelDotOrientation((e) => {
+            return e.text === "ALA" ? "top" : "right";
+          })
+          .labelDotRadius(0.3)
+          .labelSize((e) => e.size)
+          .labelText("city")
+          .labelResolution(6)
+          .labelAltitude(0.01)
+          .pointsData(airportHistory.airports)
+          .pointColor(() => "#ffffff")
+          .pointsMerge(true)
+          .pointAltitude(0.07)
+          .pointRadius(0.05);
+
+
+    })
+
+
     Globe.rotateY(-Math.PI * (5 / 9));
     Globe.rotateZ(-Math.PI / 6);
     const globeMaterial = Globe.globeMaterial();
@@ -128,6 +165,9 @@ const App: React.FC = () => {
 
     document.addEventListener("mousemove", onMouseMove);
 
+
+
+
     const animate = () => {
       camera.lookAt(scene.position);
       controls.update();
@@ -136,6 +176,22 @@ const App: React.FC = () => {
       Globe.rotation.y += 0.002;
       requestAnimationFrame(animate);
     };
+
+    // Stars (might use)
+
+    // function addStar(){
+    //   const geometry = new THREE.SphereGeometry(0.10, 100, 100)
+    //   const material = new THREE.MeshStandardMaterial( {color: 0xffffff })
+    //   const star = new THREE.Mesh(geometry, material)
+    //
+    //   const [x, y, z] = Array(3).fill().map(()=> THREE.MathUtils.randFloatSpread( 10000 ))
+    //
+    //   star.position.set(x,y,z)
+    //   scene.add(star)
+    //
+    // }
+    // Array(200).fill().forEach(addStar)
+
 
     animate();
 
