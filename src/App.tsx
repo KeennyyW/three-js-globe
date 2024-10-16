@@ -18,12 +18,14 @@ const App: React.FC = () => {
   const mountRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+
+
     let renderer, camera, scene: THREE.Scene, controls;
 
 
     let Globe: any;
 
-    // Initialize renderer
+
     renderer = new THREE.WebGLRenderer({ antialias: true });
     renderer.setPixelRatio(window.devicePixelRatio);
     renderer.setSize(window.innerWidth, window.innerHeight);
@@ -31,13 +33,13 @@ const App: React.FC = () => {
       mountRef.current.appendChild(renderer.domElement);
     }
 
-    // Initialize scene, light
+
     scene = new THREE.Scene();
     const ambientLight = new THREE.AmbientLight(0xbbbbbb, 0.5)
     scene.add(ambientLight);
     scene.background = new THREE.Color(0x040d21);
 
-    // Initialize camera, light
+
     camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
     camera.position.z = 200;
     camera.position.x = 0;
@@ -58,14 +60,15 @@ const App: React.FC = () => {
     scene.add(camera);
 
 
-    // Additional effects
+
     scene.fog = new THREE.Fog(0x535ef3, 400, 2000);
 
-    // Initialize controls
+
     controls = new OrbitControls(camera, renderer.domElement);
     controls.enableDamping = true;
 
     controls.enablePan = false;
+    controls.enableZoom = false;
     controls.minDistance = 150;
     controls.maxDistance = 220;
     controls.rotateSpeed = 0.8;
@@ -89,21 +92,21 @@ const App: React.FC = () => {
 
 
 
-    // Initialize Globe
+
     Globe = new ThreeGlobe({
       waitForGlobeReady: true,
       animateIn: true,
     })
-      .hexPolygonsData(countries.features)
-      .hexPolygonResolution(3)
-      .hexPolygonMargin(0.7)
-      .showAtmosphere(true)
-      .atmosphereColor("#3a228a")
-      .atmosphereAltitude(0.25)
+        .hexPolygonsData(countries.features)
+        .hexPolygonResolution(3)
+        .hexPolygonMargin(0.7)
+        .showAtmosphere(true)
+        .atmosphereColor("#3a228a")
+        .atmosphereAltitude(0.25)
 
     setTimeout(()=> {
       Globe.arcsData(travelHistory.connection)
-          .arcColor((e: { status: never; }) => {
+          .arcColor((e: { status: any; }) => {
             return e.status ? "#7cd0ff" : "7cd0ff";
           })
           .arcAltitude((e: { arcAlt: never; }) => {
@@ -149,7 +152,7 @@ const App: React.FC = () => {
 
 
 
-    // Handle window resize
+
     const onWindowResize = () => {
       camera.aspect = window.innerWidth / window.innerHeight;
       camera.updateProjectionMatrix();
@@ -166,6 +169,7 @@ const App: React.FC = () => {
       console.log("Mouse X:", mouseX, "Mouse Y:", mouseY);
     };
 
+
     document.addEventListener("mousemove", onMouseMove);
 
 
@@ -174,9 +178,9 @@ const App: React.FC = () => {
     const animate = () => {
       camera.lookAt(scene.position);
       controls.update();
-      // renderer.render(scene, camera);
+
       composer.render()
-      Globe.rotation.y += 0.002;
+      Globe.rotation.y += 0.005;
       requestAnimationFrame(animate);
     };
 
@@ -191,8 +195,7 @@ const App: React.FC = () => {
     };
   }, []);
 
-  return <div ref={mountRef} style={{ width: "100%", height: "100%" }} className="app-container" />
+  return <div ref={mountRef} style={{ position: 'fixed', top: 0, left: 0, width: '100%', height: '100%' }} className="content"/>
 
 };
-
 export default App;

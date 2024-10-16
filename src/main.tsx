@@ -7,6 +7,7 @@ import Content from "./Content.tsx";
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
         <App />
+        <Content />
 
 
   </StrictMode>,
