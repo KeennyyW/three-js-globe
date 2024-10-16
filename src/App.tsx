@@ -42,8 +42,8 @@ const App: React.FC = () => {
 
     camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
     camera.position.z = 200;
-    camera.position.x = 0;
-    camera.position.y = 120;
+    camera.position.x = 100;
+    camera.position.y = 100;
 
     const dLight = new DirectionalLight(0xffffff, 0.8);
     dLight.position.set(-800, 2000, 400);
