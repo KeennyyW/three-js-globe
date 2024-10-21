@@ -6,8 +6,7 @@ import countries from "./files/globe-data-min.json";
 import { RenderPass } from "three/examples/jsm/postprocessing/RenderPass.js";
 import { EffectComposer } from "three/examples/jsm/postprocessing/EffectComposer.js";
 import { UnrealBloomPass } from "three/examples/jsm/postprocessing/UnrealBloomPass.js";
-import {Color, DirectionalLight, PointLight} from "three"
-
+import {Color, DirectionalLight, PointLight} from "three";
 
 import travelHistory from "./files/connections.json";
 import airportHistory from "./files/DataCenters.json";
@@ -40,10 +39,17 @@ const App: React.FC = () => {
     scene.background = new THREE.Color(0x040d21);
 
 
-    camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-    camera.position.z = 200;
+    camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 1000);
+    
+    
+    camera.position.z = 500;
     camera.position.x = 100;
-    camera.position.y = 100;
+    camera.position.y = 200;
+
+    
+  
+
+    
 
     const dLight = new DirectionalLight(0xffffff, 0.8);
     dLight.position.set(-800, 2000, 400);
@@ -142,6 +148,8 @@ const App: React.FC = () => {
 
     Globe.rotateY(-Math.PI * (5 / 9));
     Globe.rotateZ(-Math.PI / 6);
+    Globe.position.x = 60
+
     const globeMaterial = Globe.globeMaterial();
     globeMaterial.color = new Color(0x3a228a);
     globeMaterial.emissive = new Color(0x220038);
@@ -176,6 +184,8 @@ const App: React.FC = () => {
 
 
     const animate = () => {
+    
+
       camera.lookAt(scene.position);
       controls.update();
 
@@ -188,12 +198,15 @@ const App: React.FC = () => {
 
     return () => {
       window.removeEventListener("resize", onWindowResize);
-      document.removeEventListener("mousemove", onMouseMove);
+      
       if (mountRef.current) {
         mountRef.current.removeChild(renderer.domElement);
       }
     };
   }, []);
+  
+
+  
 
   return <div ref={mountRef} style={{ position: 'fixed', top: 0, left: 0, width: '100%', height: '100%' }} className="content"/>
 

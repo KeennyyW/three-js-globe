@@ -1,7 +1,7 @@
 import "./Content.css"
 import {useState} from "react";
 
-
+import App from './App'
 
 
 
@@ -17,14 +17,16 @@ const MyComponent = () => {
                      onMouseEnter={() => setHoveredBox1(true)}
                      onMouseLeave={() => setHoveredBox1(false)}>
                     <p>Der Datenverkehr trägt 33% zu den globalen CO2 Emissionen bei</p>
-                    <div>
-                        {isHoveredBox1 ? (
-                            <div>
-                                <img src="src/files/Screenshot 2024-10-21 111032.png" alt="" className="first-image"/>
-                            </div>
-                        ) : null}
-                    </div>
+                    {isHoveredBox1 && (
+                        <div>
+                            <img src="src/files/Screenshot 2024-10-21 111032.png" alt="" className="first-image"/>
+                        </div>
+                    )}
                 </div>
+                
+                {/* Pass the hover state to the App component */}
+                
+                
 
                 <div className="fact-box"
                      onMouseEnter={() => setHoveredBox2(true)}
