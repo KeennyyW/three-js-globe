@@ -1,7 +1,7 @@
 import "./Content.css"
 import {useState} from "react";
 
-import App from './App'
+
 
 
 
