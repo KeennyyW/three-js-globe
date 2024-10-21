@@ -19,7 +19,7 @@ const MyComponent = () => {
                     <p>Der Datenverkehr trägt 33% zu den globalen CO2 Emissionen bei</p>
                     {isHoveredBox1 && (
                         <div>
-                            <img src="src/files/Screenshot 2024-10-21 111032.png" alt="" className="first-image"/>
+                            <img src="/files/Screenshot 2024-10-21 111032.png" alt="" className="first-image"/>
                         </div>
                     )}
                 </div>
@@ -36,7 +36,7 @@ const MyComponent = () => {
                     <div>
                         {isHoveredBox2 ? (
                             <div>
-                                <img src="src/files/image2.png" alt="" className="first-image"/>
+                                <img src="/files/image2.png" alt="" className="first-image"/>
                             </div>
                         ) : null}
                     </div>
