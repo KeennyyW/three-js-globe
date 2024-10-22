@@ -40,10 +40,10 @@ const App: React.FC = () => {
     scene.background = new THREE.Color(0x040d21);
 
 
-    camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-    camera.position.z = 200;
+    camera = new THREE.PerspectiveCamera(55, window.innerWidth / window.innerHeight, 0.1, 1000);
+    camera.position.z = 500;
     camera.position.x = 100;
-    camera.position.y = 100;
+    camera.position.y = 300;
 
     const dLight = new DirectionalLight(0xffffff, 0.8);
     dLight.position.set(-800, 2000, 400);
@@ -142,11 +142,14 @@ const App: React.FC = () => {
 
     Globe.rotateY(-Math.PI * (5 / 9));
     Globe.rotateZ(-Math.PI / 6);
+
+    Globe.position.x = 75
+
     const globeMaterial = Globe.globeMaterial();
     globeMaterial.color = new Color(0x3a228a);
     globeMaterial.emissive = new Color(0x220038);
     globeMaterial.emissiveIntensity = 0.1;
-    globeMaterial.shininess = 0.7;
+    globeMaterial.shininess = 0.7
 
     scene.add(Globe);
 
